@@ -1,15 +1,9 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  background-color: #282c34;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,17 +11,111 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  max-width: 500px;
+  margin: auto;
+  position: relative;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  text-transform: capitalize;
+}
+
+.weighted-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  width: 90%;
+  height: 150px;
+  margin-top: 50px;
+}
+
+.bar {
+  width: 100%;
+  height: 15px;
+  background: #eee;
+  background-image: linear-gradient(#1b1b1b, #3a3a3a, #000);
+  position: absolute;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.plate {
+  height: 150px;
+  width: 30px;
+  background: black;
+  margin: 0 2px;
+  font-size: .5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.plate[weight="2.5"] {
+  height: 50px;
+}
+
+.plate[weight="5"] {
+  height: 60px;
+}
+
+.plate[weight="25"] {
+  width: 40px;
+}
+
+.plate[weight="45"] {
+  width: 60px;
+}
+
+.gap {
+  display: inline-block;
+  width: 200px;
+}
+
+input {
+  background: #ffffff1f;
+  border: none;
+  padding: 11px;
+  font-size: 1.5em;
+  color: white;
+  border-radius: 5px;
+  width: 2em;
+  margin-bottom: 100px;
+}
+
+.lbs {
+  opacity: .3;
+}
+
+button {
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1em;
+  color: white;
+  background: #0000005e;
+  border: none;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  margin-top: 100px;
+  cursor: pointer;
+  width: 90%;
+  position: absolute;
+  bottom: 10%;
+}
+
+button:hover, button:focus {
+  text-shadow: 0 0 30px #ffffff87;
+  outline: none;
+}
+
+button:active {
+  text-shadow: 0 0 50px #ffffff;
+  border: none;
+  outline: none;
 }
