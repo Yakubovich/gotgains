@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/gotgains/static/css/main.43d5234a.chunk.css",
+    "main.css": "/gotgains/static/css/main.5692d19a.chunk.css",
     "main.js": "/gotgains/static/js/main.7a4408df.chunk.js",
     "main.js.map": "/gotgains/static/js/main.7a4408df.chunk.js.map",
     "runtime~main.js": "/gotgains/static/js/runtime~main.e4bdea1d.js",
@@ -8,8 +8,8 @@
     "static/js/2.94998a27.chunk.js": "/gotgains/static/js/2.94998a27.chunk.js",
     "static/js/2.94998a27.chunk.js.map": "/gotgains/static/js/2.94998a27.chunk.js.map",
     "index.html": "/gotgains/index.html",
-    "precache-manifest.c3d1651dc385121489ebbaac20dbc06a.js": "/gotgains/precache-manifest.c3d1651dc385121489ebbaac20dbc06a.js",
+    "precache-manifest.c7a608ee40fbef8ce110fe6748f848cc.js": "/gotgains/precache-manifest.c7a608ee40fbef8ce110fe6748f848cc.js",
     "service-worker.js": "/gotgains/service-worker.js",
-    "static/css/main.43d5234a.chunk.css.map": "/gotgains/static/css/main.43d5234a.chunk.css.map"
+    "static/css/main.5692d19a.chunk.css.map": "/gotgains/static/css/main.5692d19a.chunk.css.map"
   }
 }
