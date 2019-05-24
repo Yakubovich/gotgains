@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactCountdownClock from 'react-countdown-clock';
+
 import './App.css';
 
 class App extends React.Component {
@@ -12,7 +14,8 @@ class App extends React.Component {
       totalWeight: 145,
       stage: -1,
       warmups: this.howManyWarmups(stages),
-      stages: stages
+      stages: stages,
+      resting: false
     }
     for (var set = 0; set < SETS; set++) {
       this.state.stages.push({ weight: 1, reps: REPS});
@@ -28,8 +31,14 @@ class App extends React.Component {
   }
 
   nextStage() {
-    if (this.state.stage < this.state.stages.length - 1) 
-      this.setState({ stage: this.state.stage + 1 });
+    if (this.state.stage < this.state.stages.length - 1)
+      this.setState({ stage: this.state.stage + 1, resting: false });
+    else
+      this.setState({ stage: -1 });
+  }
+
+  rest() {
+    this.setState({ resting: true });
   }
 
   stageDetails() {
@@ -63,14 +72,18 @@ class App extends React.Component {
     else if (stage == this.state.warmups - 1)
       return "Start First Set";
     else if (stage < this.state.warmups - 1)
-      return "Next Warmup";
-    else 
+      return "Next Warmup Set";
+    else if (stage < this.state.stages.length - 1)
       return "Next Set";
+    else
+      return "Done";
   }
 
   headerText() {
     var english = ["first", "second", "third", "4th", "5th", "6th", "7th", "8th", "9th"];
     var stage = this.state.stage;
+    if (this.state.resting)
+      return "Rest";
     if (stage == -1)
       return "Warmup";
     else if (stage == this.state.warmups)
@@ -94,19 +107,34 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-	  {!this.areWeStarted() ? 
-	  <div>
-            <input type="text"
-	           value={this.state.totalWeight}
-	           onChange={ (a)=>this.setState({ totalWeight: a.target.value }) } />
-            <span className="lbs"> lbs</span>
-          </div>
-	  : ""}
-	  {this.areWeStarted() ? <h1>{this.headerText()}</h1> : ""}
-	  {this.areWeStarted() ? this.instructions() : ""}
-          {this.areWeStarted() ? <BarWithWeight totalWeight={this.stageDetails().weight} /> : ""}
-	  {!this.areWeDone() ? <button onClick={ this.nextStage.bind(this) } >{this.buttonText()}</button> : ""}
+        <header className="App-container">
+	  {this.areWeStarted() ?
+	    <div>
+	      <h1>{this.headerText()}</h1>
+	      { this.state.resting ? 
+	        <div>
+	        <ReactCountdownClock seconds={3}
+                       color="#fff"
+                       alpha={0.9}
+                       size={300}
+                       onComplete={this.nextStage.bind(this)} />
+	        </div>
+	        :
+	        <div>
+	          {this.instructions()}
+                  <BarWithWeight totalWeight={this.stageDetails().weight} />
+	        </div>
+	      }
+	    </div>
+	  :
+	    <div>
+              <input type="text"
+	             value={this.state.totalWeight}
+	             onChange={ (a)=>this.setState({ totalWeight: a.target.value }) } />
+              <span className="lbs"> lbs</span>
+            </div>
+	  }
+	  {!this.state.resting ? <button onClick={ this.state.stage == -1 || this.areWeDone() ? this.nextStage.bind(this) : this.rest.bind(this) }>{this.buttonText()}</button> : "" }
         </header>
       </div>
     );
