@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       totalWeight: 145,
       stage: -1,
+      restTime: 2,
       warmups: this.howManyWarmups(stages),
       stages: stages,
       resting: false
@@ -38,7 +39,12 @@ class App extends React.Component {
   }
 
   rest() {
+    this.nextStage();
     this.setState({ resting: true });
+  }
+
+  stopRest() {
+    this.setState({ resting: false });
   }
 
   stageDetails() {
@@ -113,25 +119,33 @@ class App extends React.Component {
 	      <h1>{this.headerText()}</h1>
 	      { this.state.resting ? 
 	        <div>
-	        <ReactCountdownClock seconds={3}
+	        <ReactCountdownClock seconds={this.state.restTime}
                        color="#fff"
                        alpha={0.9}
-                       size={300}
-                       onComplete={this.nextStage.bind(this)} />
+                       size={100}
+                       onComplete={this.stopRest.bind(this)} />
 	        </div>
-	        :
-	        <div>
-	          {this.instructions()}
-                  <BarWithWeight totalWeight={this.stageDetails().weight} />
-	        </div>
+	        : "" 
 	      }
+	      <div>
+	        {this.instructions()}
+                <BarWithWeight totalWeight={this.stageDetails().weight} />
+	      </div>
 	    </div>
 	  :
 	    <div>
+	      <div className="field">
               <input type="text"
 	             value={this.state.totalWeight}
 	             onChange={ (a)=>this.setState({ totalWeight: a.target.value }) } />
               <span className="lbs"> lbs</span>
+	      </div>
+	      <div className="field">
+              <input type="text"
+	             value={this.state.restTime}
+	             onChange={ (a)=>this.setState({ restTime: a.target.value }) } />
+              <span className="lbs"> second rest</span>
+	      </div>
             </div>
 	  }
 	  {!this.state.resting ? <button onClick={ this.state.stage == -1 || this.areWeDone() ? this.nextStage.bind(this) : this.rest.bind(this) }>{this.buttonText()}</button> : "" }
