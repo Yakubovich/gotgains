@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/gotgains/static/css/main.17aa17b9.chunk.css",
-    "main.js": "/gotgains/static/js/main.7a4408df.chunk.js",
-    "main.js.map": "/gotgains/static/js/main.7a4408df.chunk.js.map",
+    "main.js": "/gotgains/static/js/main.e94f73c2.chunk.js",
+    "main.js.map": "/gotgains/static/js/main.e94f73c2.chunk.js.map",
     "runtime~main.js": "/gotgains/static/js/runtime~main.e4bdea1d.js",
     "runtime~main.js.map": "/gotgains/static/js/runtime~main.e4bdea1d.js.map",
     "static/js/2.94998a27.chunk.js": "/gotgains/static/js/2.94998a27.chunk.js",
     "static/js/2.94998a27.chunk.js.map": "/gotgains/static/js/2.94998a27.chunk.js.map",
     "index.html": "/gotgains/index.html",
-    "precache-manifest.fe9b299b32b81ef321c020a2c9f1fa2c.js": "/gotgains/precache-manifest.fe9b299b32b81ef321c020a2c9f1fa2c.js",
+    "precache-manifest.f9238665321271cd3bdc0f744bd2e94a.js": "/gotgains/precache-manifest.f9238665321271cd3bdc0f744bd2e94a.js",
     "service-worker.js": "/gotgains/service-worker.js",
     "static/css/main.17aa17b9.chunk.css.map": "/gotgains/static/css/main.17aa17b9.chunk.css.map"
   }
